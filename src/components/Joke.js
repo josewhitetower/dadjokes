@@ -11,10 +11,19 @@ export default class Joke extends Component {
 
   render() {
     return (
-      <div className="Joke">
-        <span onClick={this.downVote}>-</span>
+      <div className="Joke flex">
+        <div className="flex ">
+          <span onClick={this.upVote}>
+            <i className="fa fa-angle-up fa-xs" />
+          </span>
+          <span className="border-2 border-red-300 h-8 rounded rounded-full w-8 inline-flex justify-center content-center">
+            {this.props.votes}
+          </span>
+          <span onClick={this.downVote}>
+            <i className="fa fa-angle-down fa-xs" />
+          </span>
+        </div>
         <p>{this.props.joke}</p>
-        <span onClick={this.upVote}>+</span>
       </div>
     );
   }
