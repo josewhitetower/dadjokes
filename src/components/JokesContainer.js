@@ -66,32 +66,36 @@ export default class JokesContainer extends Component {
   };
 
   render() {
-    const jokes = this.state.jokes.map(joke => {
-      return (
-        <Joke
-          joke={joke.joke}
-          key={joke.id}
-          id={joke.id}
-          votes={joke.votes}
-          downVote={this.downVote}
-          upVote={this.upVote}
-        />
-      );
-    });
+    const jokes = this.state.jokes
+      .sort((a, b) => b.votes - a.votes)
+      .map(joke => {
+        return (
+          <Joke
+            joke={joke.joke}
+            key={joke.id}
+            id={joke.id}
+            votes={joke.votes}
+            downVote={this.downVote}
+            upVote={this.upVote}
+          />
+        );
+      });
 
     const loader = (
-      <div className="loader">
+      <div className="loader" style={{ height: 692 + "px" }}>
         <div />
         <div />
       </div>
     );
     return (
-      <div className="JokesContainer flex">
-        <div>
+      <div className="JokesContainer flex container mx-auto mt-20 flex-col md:flex-row lg:flex-row px-2">
+        <div className="bg-blue-100 shadow-lg lg:w-3/12 md:w-6/12 w-full z-10 h-auto">
           <h1>Dad's Jokes</h1>
           <button onClick={this.getJokes}>Get Jokes</button>
         </div>
-        <div>{this.state.loading ? loader : jokes}</div>
+        <div className="bg-gray-100 lg:my-10 md:my-10 px-6 py-4">
+          {this.state.loading ? loader : jokes}
+        </div>
       </div>
     );
   }
