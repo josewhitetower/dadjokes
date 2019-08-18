@@ -6,20 +6,22 @@ const BASE_URL = "https://icanhazdadjoke.com/";
 
 export default class JokesContainer extends Component {
   state = {
-    jokes: []
+    jokes: [],
+    loading: true
   };
 
   componentDidMount() {
     const jokes = JSON.parse(localStorage.getItem("jokes") || "[]");
 
     if (jokes.length) {
-      this.setState({ jokes });
+      this.setState({ jokes, loading: false });
     } else {
       this.getJokes();
     }
   }
 
   getJokes = async () => {
+    this.setState({ loading: true });
     const jokes = [];
     while (jokes.length < 10) {
       const response = await axios.get(BASE_URL, {
@@ -32,7 +34,7 @@ export default class JokesContainer extends Component {
         jokes.push(joke);
       }
     }
-    this.setState({ jokes });
+    this.setState({ jokes, loading: false });
   };
 
   componentDidUpdate() {
@@ -76,6 +78,21 @@ export default class JokesContainer extends Component {
         />
       );
     });
-    return <div>{jokes}</div>;
+
+    const loader = (
+      <div className="loader">
+        <div />
+        <div />
+      </div>
+    );
+    return (
+      <div className="JokesContainer flex">
+        <div>
+          <h1>Dad's Jokes</h1>
+          <button onClick={this.getJokes}>Get Jokes</button>
+        </div>
+        <div>{this.state.loading ? loader : jokes}</div>
+      </div>
+    );
   }
 }
