@@ -93,7 +93,7 @@ export default class JokesContainer extends Component {
     );
     return (
       <div className="JokesContainer flex container mx-auto py-40 flex-col-reverse md:flex-row lg:flex-row px-2 h-screen">
-        <div className="bg-blue-200 h-auto lg:w-6/12 md:w-8/12 py-24 shadow-lg text-center w-full z-10 text-red-500">
+        <div className="bg-blue-200 h-auto lg:w-6/12 md:w-8/12 py-6 shadow-lg text-center w-full z-10 text-red-500">
           <h1 className="font-semibold lg:my-16 md:my-16 text-5xl">
             Dad's Jokes
           </h1>
