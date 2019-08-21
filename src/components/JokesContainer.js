@@ -94,9 +94,7 @@ export default class JokesContainer extends Component {
     return (
       <div className="JokesContainer flex container mx-auto py-20 flex-col-reverse md:flex-row lg:flex-row px-2 h-screen">
         <div className="bg-blue-200 h-auto lg:w-6/12 md:w-8/12 py-6 shadow-lg text-center w-full z-10 text-red-500">
-          <h1 className="font-semibold lg:my-16 md:my-16 text-5xl">
-            Dad's Jokes
-          </h1>
+          <h1 className="font-semibold lg:my-16 text-5xl">Dad's Jokes</h1>
           <button
             className="border border-red-400 hover:bg-red-400 hover:text-white mt-6 p-4 rounded text-xl"
             onClick={this.getJokes}
@@ -105,7 +103,7 @@ export default class JokesContainer extends Component {
           </button>
         </div>
         <div
-          className={`bg-gray-100 container lg:my-10 md:my-10 overflow-auto px-6 py-4 shadow-lg${
+          className={`bg-gray-100 container h-full lg:my-10 md:my-10 overflow-auto px-6 py-4 shadow-lg${
             this.state.loading ? " flex justify-center items-center" : ""
           }`}
         >
