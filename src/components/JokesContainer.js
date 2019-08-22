@@ -15,6 +15,8 @@ export default class JokesContainer extends Component {
   };
 
   componentDidMount() {
+    // The best way is to use a Set, so it might be easier to chek unique values
+    // and avoid increse of O Notation
     const jokes = JSON.parse(localStorage.getItem("jokes") || "[]");
 
     if (jokes.length) {
